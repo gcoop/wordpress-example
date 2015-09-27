@@ -119,6 +119,8 @@ require_once(getenv('OPENSHIFT_REPO_DIR') . '.openshift/openshift.inc');
 |--------------------------------------------------------------------------
 */
 
+define('WPDB_DRIVER', 'wpdb_driver_pdo_mysql');
+
 // absolute path to the WordPress directory
 if ( !defined('ABSPATH') )
   define('ABSPATH', dirname(__FILE__) . '/');

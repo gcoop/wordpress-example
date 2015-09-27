@@ -2,7 +2,8 @@
 
 # To force a specific version of WordPress, set this variable:
 #
-# install_version="4.1"
+install_version="4.3.1"
+wp_driver_install_version="2.0.1"
 
 # Used in this script only
 #
@@ -46,4 +47,14 @@ tar --strip-components=1 -xzf wordpress-${install_version}.tar.gz
 rm -rf wordpress-${install_version}.tar.gz
 echo $install_version > ${OPENSHIFT_BUILD_DEPENDENCIES_DIR}.current_version
 
+popd >/dev/null
+
+# Download WP Driver Plugin.
+install_dir=${OPENSHIFT_BUILD_DEPENDENCIES_DIR}wp-db-driver-${wp_driver_install_version}
+mkdir -p $install_dir
+
+pushd ${install_dir} >/dev/null
+curl -Ls https://downloads.wordpress.org/plugin/wp-db-driver.${install_version}.zip > wp-db-driver.zip
+unzip wp-db-driver.zip
+rm -rf wp-db-driver.zip
 popd >/dev/null

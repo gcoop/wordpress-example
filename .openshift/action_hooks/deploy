@@ -36,6 +36,12 @@ fi
 #
 if [ ! -d ${OPENSHIFT_DATA_DIR}plugins ]; then
   mv ${dest_dir}/wp-content/plugins ${OPENSHIFT_DATA_DIR}plugins
+
+  # Copy the DB Driver plugin in.
+  db_driver_install_dir=${OPENSHIFT_BUILD_DEPENDENCIES_DIR}wp-db-driver
+
+  mv ${db_driver_install_dir} ${OPENSHIFT_DATA_DIR}plugins
+  mv ${OPENSHIFT_DATA_DIR}plugins/wp-db-driver/wp-content/db.php ${OPENSHIFT_DATA_DIR}wp-content/
 fi
 
 if [ ! -d ${OPENSHIFT_DATA_DIR}themes ]; then
